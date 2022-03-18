@@ -1,53 +1,53 @@
 alerts:
-- rule: DEPLOYMENT_FAILED
-- rule: DOMAIN_FAILED
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
 name: n8n-app-do
 services:
-- name: n8n-app-do
-  build_command: npm install
-  environment_slug: node-js
-  envs:
-  - key: N8N_BASIC_AUTH_ACTIVE
-    scope: RUN_AND_BUILD_TIME
-    value: "false"
-  - key: N8N_BASIC_AUTH_USER
-    scope: RUN_AND_BUILD_TIME
-    value: ht-user
-  - key: N8N_BASIC_AUTH_PASSWORD
-    scope: RUN_AND_BUILD_TIME
-    type: SECRET
-    value: "Ch@ngeMe!"
-  - key: WEBHOOK_URL
-    scope: RUN_AND_BUILD_TIME
-    value: ${_self.PUBLIC_URL}
-  - key: DB_TYPE
-    scope: RUN_AND_BUILD_TIME
-    value: postgresdb
-  - key: DB_POSTGRESDB_DATABASE
-    scope: RUN_AND_BUILD_TIME
-    value: ${db.DATABASE}
-  - key: DB_POSTGRESDB_HOST
-    scope: RUN_AND_BUILD_TIME
-    value: ${db.HOSTNAME}
-  - key: DB_POSTGRESDB_PORT
-    scope: RUN_AND_BUILD_TIME
-    value: ${db.PORT}
-  - key: DB_POSTGRESDB_USER      
-    scope: RUN_AND_BUILD_TIME
-    value: ${db.USERNAME}
-  - key: DB_POSTGRESDB_PASSWORD
-    scope: RUN_AND_BUILD_TIME
-    value: ${db.PASSWORD}
-  git:
-    branch: master
-    repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
-  http_port: 5678
-  instance_count: 1
-  instance_size_slug: basic-xxs
-  routes:
-  - path: /
-  run_command: ./node_modules/n8n/bin/n8n
+  - name: n8n-app-do
+    build_command: npm install
+    environment_slug: node-js
+    envs:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        scope: RUN_AND_BUILD_TIME
+        value: "false"
+      - key: N8N_BASIC_AUTH_USER
+        scope: RUN_AND_BUILD_TIME
+        value: ht-user
+      - key: N8N_BASIC_AUTH_PASSWORD
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+        value: "Ch@ngeMe!"
+      - key: WEBHOOK_URL
+        scope: RUN_AND_BUILD_TIME
+        value: ${_self.PUBLIC_URL}
+      - key: DB_TYPE
+        scope: RUN_AND_BUILD_TIME
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        scope: RUN_AND_BUILD_TIME
+        value: ${DATABASE}
+      - key: DB_POSTGRESDB_HOST
+        scope: RUN_AND_BUILD_TIME
+        value: ${HOSTNAME}
+      - key: DB_POSTGRESDB_PORT
+        scope: RUN_AND_BUILD_TIME
+        value: ${PORT}
+      - key: DB_POSTGRESDB_USER
+        scope: RUN_AND_BUILD_TIME
+        value: ${USERNAME}
+      - key: DB_POSTGRESDB_PASSWORD
+        scope: RUN_AND_BUILD_TIME
+        value: ${PASSWORD}
+    git:
+      branch: master
+      repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
+    http_port: 5678
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+    run_command: ./node_modules/n8n/bin/n8n
 databases:
-- name: "n8n-db"
-  engine: PG
-  production: false
+  - name: "n8n-db"
+    engine: PG
+    production: false
