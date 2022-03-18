@@ -41,7 +41,6 @@ spec:
       value: ${db.PASSWORD}
     git:
       branch: master
-      deploy_on_push: "true"
       repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
     http_port: 5678
     instance_count: 1
