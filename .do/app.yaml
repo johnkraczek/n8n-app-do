@@ -21,13 +21,15 @@ services:
       - key: DB_POSTGRESDB_DATABASE
         value: ${n8n-db.DATABASE}
       - key: DB_POSTGRESDB_HOST
-        value: ${n8n-db.HOSTNAME}
+        value: "${n8n-db.HOSTNAME}"
       - key: DB_POSTGRESDB_PORT
         value: ${n8n-db.PORT}
       - key: DB_POSTGRESDB_USER
         value: ${n8n-db.USERNAME}
       - key: DB_POSTGRESDB_PASSWORD
         value: ${n8n-db.PASSWORD}
+      - key: DB_POSTGRESDB_SSL_CA
+        value: ${n8n-db.CA_CERT}
     git:
       branch: master
       repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
