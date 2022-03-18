@@ -1,0 +1,17 @@
+spec:
+  name: react-node-app
+  services:
+  - environment_slug: node-js
+    git:
+      branch: master
+      repo_clone_url: https://github.com/johnkraczek/react-node-app.git
+    name: react-node-app
+    envs:
+    - key: N8N_BASIC_AUTH_ACTIVE
+      value: false
+    - key: N8N_BASIC_AUTH_USER
+      value: 'ht-user'
+    - key: N8N_BASIC_AUTH_PASSWORD
+      value: 'Ch@ngeMe!'
+    - key: WEBHOOK_URL
+      value: ${PUBLIC_URL}

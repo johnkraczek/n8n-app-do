@@ -1,0 +1,16 @@
+{
+  "name": "n8n-app-do",
+  "version": "1.0.0",
+  "description": "App installer for n8n",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/n8n/bin/n8n",
+    "build": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "n8n": "*"
+  }
+}

@@ -1,0 +1,17 @@
+name: react-node-app
+services:
+- environment_slug: node-js
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: johnkraczek/react-node-app
+  name: react-node-app
+  envs:
+    - key: N8N_BASIC_AUTH_ACTIVE
+      value: false
+    - key: N8N_BASIC_AUTH_USER
+      value: 'ht-user'
+    - key: N8N_BASIC_AUTH_PASSWORD
+      value: 'Ch@ngeMe!'
+    - key: WEBHOOK_URL
+      value: ${PUBLIC_URL}
