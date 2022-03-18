@@ -6,6 +6,7 @@ spec:
       branch: master
       repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
     name: n8n-app-do
+    http_port: 5678
     envs:
     - key: N8N_BASIC_AUTH_ACTIVE
       value: 'false'
@@ -14,4 +15,4 @@ spec:
     - key: N8N_BASIC_AUTH_PASSWORD
       value: 'Ch@ngeMe!'
     - key: WEBHOOK_URL
-      value: ${PUBLIC_URL}
+      value: ${_self.PUBLIC_URL}
