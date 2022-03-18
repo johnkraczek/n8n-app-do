@@ -4,8 +4,8 @@ spec:
   - environment_slug: node-js
     git:
       branch: master
-      repo_clone_url: https://github.com/johnkraczek/react-node-app.git
-    name: react-node-app
+      repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
+    name: n8n-app-do
     envs:
     - key: N8N_BASIC_AUTH_ACTIVE
       value: false

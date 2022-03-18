@@ -1,11 +1,11 @@
-name: react-node-app
+name: n8n-app-do
 services:
 - environment_slug: node-js
   github:
     branch: master
     deploy_on_push: true
-    repo: johnkraczek/react-node-app
-  name: react-node-app
+    repo: johnkraczek/n8n-app-do
+  name: n8n-app-do
   envs:
     - key: N8N_BASIC_AUTH_ACTIVE
       value: false
