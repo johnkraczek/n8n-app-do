@@ -1,18 +1,33 @@
 spec:
+  alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
   name: n8n-app-do
   services:
-  - environment_slug: node-js
-    git:
-      branch: master
-      repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
-    name: n8n-app-do
-    http_port: 5678
+  - build_command: npm install
+    environment_slug: node-js
     envs:
     - key: N8N_BASIC_AUTH_ACTIVE
-      value: 'false'
+      scope: RUN_AND_BUILD_TIME
+      value: "false"
     - key: N8N_BASIC_AUTH_USER
-      value: 'ht-user'
+      scope: RUN_AND_BUILD_TIME
+      value: ht-user
     - key: N8N_BASIC_AUTH_PASSWORD
-      value: 'Ch@ngeMe!'
+      scope: RUN_AND_BUILD_TIME
+      type: SECRET
+      value: "Ch@ngeMe!"
     - key: WEBHOOK_URL
-      value: ${_self.PUBLIC_URL}
+      scope: RUN_AND_BUILD_TIME
+      value: ${PUBLIC_URL}
+    git:
+      branch: master
+      deploy_on_push: true
+      repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
+    http_port: 5678
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    name: n8n-app-do
+    routes:
+    - path: /
+    run_command: ./node_modules/n8n/bin/n8n
