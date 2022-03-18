@@ -3,7 +3,8 @@
   - rule: DOMAIN_FAILED
   name: n8n-app-do
   services:
-  - build_command: npm install
+  - name: n8n-app-do
+    build_command: npm install
     environment_slug: node-js
     envs:
     - key: N8N_BASIC_AUTH_ACTIVE
@@ -18,7 +19,25 @@
       value: "Ch@ngeMe!"
     - key: WEBHOOK_URL
       scope: RUN_AND_BUILD_TIME
-      value: ${PUBLIC_URL}
+      value: ${_self.PUBLIC_URL}
+    - key: DB_TYPE
+      scope: RUN_AND_BUILD_TIME
+      value: mysqldb
+    - key: DB_MYSQLDB_DATABASE
+      scope: RUN_AND_BUILD_TIME
+      value: ${db.DATABASE}
+    - key: DB_MYSQLDB_HOST
+      scope: RUN_AND_BUILD_TIME
+      value: ${db.HOSTNAME}
+    - key: DB_MYSQLDB_PORT
+      scope: RUN_AND_BUILD_TIME
+      value: ${db.PORT}
+    - key: DB_MYSQLDB_USER      
+      scope: RUN_AND_BUILD_TIME
+      value: ${db.USERNAME}
+    - key: DB_MYSQLDB_PASSWORD
+      scope: RUN_AND_BUILD_TIME
+      value: ${db.PASSWORD}
     git:
       branch: master
       deploy_on_push: "true"
@@ -26,7 +45,10 @@
     http_port: 5678
     instance_count: 1
     instance_size_slug: basic-xxs
-    name: n8n-app-do
     routes:
     - path: /
     run_command: ./node_modules/n8n/bin/n8n
+  databases:
+  - name: "n8n-db"
+    engine: MYSQL
+    production: false
