@@ -23,20 +23,20 @@ spec:
       value: ${_self.PUBLIC_URL}
     - key: DB_TYPE
       scope: RUN_AND_BUILD_TIME
-      value: mysqldb
-    - key: DB_MYSQLDB_DATABASE
+      value: postgresdb
+    - key: DB_POSTGRESDB_DATABASE
       scope: RUN_AND_BUILD_TIME
       value: ${db.DATABASE}
-    - key: DB_MYSQLDB_HOST
+    - key: DB_POSTGRESDB_HOST
       scope: RUN_AND_BUILD_TIME
       value: ${db.HOSTNAME}
-    - key: DB_MYSQLDB_PORT
+    - key: DB_POSTGRESDB_PORT
       scope: RUN_AND_BUILD_TIME
       value: ${db.PORT}
-    - key: DB_MYSQLDB_USER      
+    - key: DB_POSTGRESDB_USER      
       scope: RUN_AND_BUILD_TIME
       value: ${db.USERNAME}
-    - key: DB_MYSQLDB_PASSWORD
+    - key: DB_POSTGRESDB_PASSWORD
       scope: RUN_AND_BUILD_TIME
       value: ${db.PASSWORD}
     git:
@@ -50,5 +50,5 @@ spec:
     run_command: ./node_modules/n8n/bin/n8n
   databases:
   - name: "n8n-db"
-    engine: MYSQL
+    engine: PG
     production: false
