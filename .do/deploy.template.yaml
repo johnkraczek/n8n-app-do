@@ -1,5 +1,5 @@
 spec:
-  name: react-node-app
+  name: n8n-app-do
   services:
   - environment_slug: node-js
     git:
