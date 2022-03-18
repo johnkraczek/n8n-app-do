@@ -3,6 +3,19 @@ spec:
     - rule: DEPLOYMENT_FAILED
     - rule: DOMAIN_FAILED
   name: n8n-app-do
+  envs:
+    - key: DB_TYPE
+      value: postgresdb
+    - key: DB_POSTGRESDB_DATABASE
+      value: ${DATABASE}
+    - key: DB_POSTGRESDB_HOST
+      value: ${HOSTNAME}
+    - key: DB_POSTGRESDB_PORT
+      value: ${PORT}
+    - key: DB_POSTGRESDB_USER
+      value: ${USERNAME}
+    - key: DB_POSTGRESDB_PASSWORD
+      value: ${PASSWORD}
   services:
     - name: n8n-app-do
       build_command: npm install
@@ -21,24 +34,6 @@ spec:
         - key: WEBHOOK_URL
           scope: RUN_AND_BUILD_TIME
           value: ${_self.PUBLIC_URL}
-        - key: DB_TYPE
-          scope: RUN_AND_BUILD_TIME
-          value: postgresdb
-        - key: DB_POSTGRESDB_DATABASE
-          scope: RUN_AND_BUILD_TIME
-          value: ${DATABASE}
-        - key: DB_POSTGRESDB_HOST
-          scope: RUN_AND_BUILD_TIME
-          value: ${HOSTNAME}
-        - key: DB_POSTGRESDB_PORT
-          scope: RUN_AND_BUILD_TIME
-          value: ${PORT}
-        - key: DB_POSTGRESDB_USER
-          scope: RUN_AND_BUILD_TIME
-          value: ${USERNAME}
-        - key: DB_POSTGRESDB_PASSWORD
-          scope: RUN_AND_BUILD_TIME
-          value: ${PASSWORD}
       git:
         branch: master
         repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
