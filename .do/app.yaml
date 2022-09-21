@@ -4,7 +4,7 @@ alerts:
 name: n8n-app-do
 services:
   - name: n8n-app-do
-    build_command: npm install
+    build_command: npm install n8n@latest
     environment_slug: node-js
     envs:
       - key: N8N_BASIC_AUTH_ACTIVE
