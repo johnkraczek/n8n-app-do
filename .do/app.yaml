@@ -1,43 +1,26 @@
 alerts:
-  - rule: DEPLOYMENT_FAILED
-  - rule: DOMAIN_FAILED
-name: n8n-app-do
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+envs:
+- key: WEBHOOK_URL1
+  scope: RUN_AND_BUILD_TIME
+  value: ${_self.PUBLIC_URL}
+name: jellyfish-app
 region: nyc
 services:
-  - name: web-application
-    envs:
-      - key: WEBHOOK_URL
-        scope: RUN_AND_BUILD_TIME
-        value: '${_self.PUBLIC_URL}'
-      - key: DB_TYPE
-        value: postgresdb
-      - key: DB_POSTGRESDB_DATABASE
-        value: ${n8n-db.DATABASE}
-      - key: DB_POSTGRESDB_HOST
-        value: "${n8n-db.HOSTNAME}"
-      - key: DB_POSTGRESDB_PORT
-        value: ${n8n-db.PORT}
-      - key: DB_POSTGRESDB_USER
-        value: ${n8n-db.USERNAME}
-      - key: DB_POSTGRESDB_PASSWORD
-        value: ${n8n-db.PASSWORD}
-      - key: DB_POSTGRESDB_SSL_CA
-        value: ${n8n-db.CA_CERT}
-    http_port: 5678
-    image:
-      registry: matthijs166
-      registry_type: DOCKER_HUB
-      repository: n8n-websocket
-      tag: latest
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    routes:
-      - path: /
-    run_command: n8n
-    git:
-      branch: master
-      repo_clone_url: https://github.com/johnkraczek/n8n-app-do.git
-databases:
-  - name: "n8n-db"
-    engine: PG
-    production: false
+- envs:
+  - key: WEBHOOK_URL
+    scope: RUN_AND_BUILD_TIME
+    value: ${_self.PUBLIC_URL}
+  http_port: 5678
+  image:
+    registry: matthijs166
+    registry_type: DOCKER_HUB
+    repository: n8n-websocket
+    tag: latest
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: matthijs-166-n-8-n-websocket
+  routes:
+  - path: /
+  run_command: n8n
