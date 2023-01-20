@@ -1,17 +1,14 @@
+name: n8n-app-do
 alerts:
 - rule: DEPLOYMENT_FAILED
 - rule: DOMAIN_FAILED
-envs:
-- key: WEBHOOK_URL1
-  scope: RUN_AND_BUILD_TIME
-  value: ${_self.PUBLIC_URL}
-name: jellyfish-app
 region: nyc
 services:
 - envs:
   - key: WEBHOOK_URL
     scope: RUN_AND_BUILD_TIME
     value: ${_self.PUBLIC_URL}
+  name: web-service
   http_port: 5678
   image:
     registry: matthijs166
@@ -20,7 +17,6 @@ services:
     tag: latest
   instance_count: 1
   instance_size_slug: basic-xxs
-  name: matthijs-166-n-8-n-websocket
   routes:
   - path: /
   run_command: n8n
