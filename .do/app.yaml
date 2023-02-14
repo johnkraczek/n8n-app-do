@@ -8,6 +8,8 @@ services:
       - key: WEBHOOK_URL
         scope: RUN_AND_BUILD_TIME
         value: '${_self.PUBLIC_URL}'
+      - key: N8N_PUSH_BACKEND
+        value: websocket
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
@@ -25,9 +27,9 @@ services:
     name: web-service
     http_port: 5678
     image:
-      registry: matthijs166
+      registry: n8nio
       registry_type: DOCKER_HUB
-      repository: n8n-websocket
+      repository: n8n
       tag: latest
     instance_count: 1
     instance_size_slug: basic-xxs
